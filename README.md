@@ -18,7 +18,7 @@
 ### Player
 
 - [ ] Inventory management
-- [ ] Implement character statistics
+- [x] Implement character statistics
 - [x] Character naming
 - [x] Generic Selectable
 - [ ] Player Trade System (Interactable)
