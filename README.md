@@ -1,6 +1,10 @@
-# Jeff -- Grid Games
+# Jeff
 
-## TODO
+Hi, my name is Jeff and I've co-founded [Grid Games](http://grid-games.com) together with my brother [Joe](http://joe.grid-games.com).
+
+I go by [@jeffehh](http://twitter.com/jeffehh) on Twitter.
+
+## Grid Games TODO (code)
 
 ### Documentation
 
