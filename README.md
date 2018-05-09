@@ -5,11 +5,20 @@
 ### Documentation
 
 - [ ] Document `net` and `net/core` code
+  - Note: Although plenty inline docs are provided already, more inline documentation is required
   - [ ] Convert to standard C# documentation
-  - [ ] Although plenty inline docs are provided already, more inline documentation is required
-- [ ] Write protocol documentation
+- [ ] The Grid Network Protocol docs
 
 ### Character synchronisation
 
+- [ ] Character stats
+- [x] Character naming
+- [ ] Item trading
+
+### Player
+
+- [ ] Inventory management
 - [ ] Implement character statistics
-- [ ] Implement character naming
+- [x] Character naming
+- [x] Generic Selectable
+- [ ] Player Trade System (Interactable)
