@@ -1,4 +1,4 @@
-# Jeff
+# Jeff's Personal Website
 
 Hi, my name is Jeff and I've co-founded [Grid Games](http://grid-games.com) together with my brother [Joe](http://joe.grid-games.com).
 
