@@ -6,6 +6,8 @@ I go by [@jeffehh](http://twitter.com/jeffehh) on Twitter and you can contact me
 
 ## Grid Games TODO (code)
 
+[Suggest me a TODO](https://github.com/obscuren/gg-personal-website/issues/new)
+
 ### Documentation
 
 - [ ] Document `net` and `net/core` code
