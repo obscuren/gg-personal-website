@@ -28,3 +28,10 @@ I go by [@jeffehh](http://twitter.com/jeffehh) on Twitter and you can contact me
 - [x] Character naming
 - [x] Generic Selectable
 - [ ] Player Trade System (Interactable)
+
+### AUTH and Login
+
+- [ ] login controller
+- [ ] Rework the login scene
+- [ ] encrypt login
+- [ ] Create new scene for the game loader
