@@ -35,3 +35,7 @@ I go by [@jeffehh](http://twitter.com/jeffehh) on Twitter and you can contact me
 - [ ] Rework the login scene
 - [ ] encrypt login
 - [ ] Create new scene for the game loader
+
+### MISC stuff
+
+- [ ] Find web developer for http://grid-games.com
