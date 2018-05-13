@@ -38,7 +38,7 @@ I go by [@jeffehh](http://twitter.com/jeffehh) on Twitter and you can contact me
 
 ### Scene management
 
-- [ ] Async loading using [LoadLevelAsync](https://docs.unity3d.com/ScriptReference/Application.LoadLevelAsync.html) [how to](https://answers.unity.com/questions/457594/how-to-make-a-progress-bar-for-loading-next-scene.html)
+- [ ] Async loading using [LoadLevelAsync](https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadSceneAsync.html) [how to](https://answers.unity.com/questions/457594/how-to-make-a-progress-bar-for-loading-next-scene.html)
 
 ### MISC stuff
 
