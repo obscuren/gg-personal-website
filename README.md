@@ -6,7 +6,7 @@ I go by [@jeffehh](http://twitter.com/jeffehh) on Twitter and you can contact me
 
 ## Grid Games TODO (code)
 
-[Suggest me a TODO](https://github.com/obscuren/gg-personal-website/issues/new)
+[Suggest me a TODO](https://github.com/obscuren/gg-personal-website/issues/new) | [Notes](notes.html)
 
 ### Documentation
 
@@ -39,3 +39,4 @@ I go by [@jeffehh](http://twitter.com/jeffehh) on Twitter and you can contact me
 ### MISC stuff
 
 - [ ] Find web developer for http://grid-games.com
+
