@@ -17,7 +17,7 @@ I go by [@jeffehh](http://twitter.com/jeffehh) on Twitter and you can contact me
 
 ### Character synchronisation
 
-- [ ] Character stats
+- [x] Character stats
 - [x] Character naming
 - [ ] Item trading
 
@@ -31,14 +31,14 @@ I go by [@jeffehh](http://twitter.com/jeffehh) on Twitter and you can contact me
 
 ### AUTH and Login
 
-- [ ] login controller
-- [ ] Rework the login scene
+- [x] login controller
+- [x] Rework the login scene
 - [ ] encrypt login
-- [ ] Create new scene for the game loader
+- [x] Create new scene for the game loader
 
 ### Scene management
 
-- [ ] Async loading using [LoadLevelAsync](https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadSceneAsync.html) [how to](https://answers.unity.com/questions/457594/how-to-make-a-progress-bar-for-loading-next-scene.html)
+- [x] Async loading using [LoadLevelAsync](https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadSceneAsync.html) [how to](https://answers.unity.com/questions/457594/how-to-make-a-progress-bar-for-loading-next-scene.html)
 
 ### MISC stuff
 
