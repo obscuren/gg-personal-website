@@ -1,0 +1,361 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import yaml from 'js-yaml';
+import fs from 'node:fs';
+import path from 'node:path';
+
+const raw = fs.readFileSync(path.resolve('src/content/timeline.md'), 'utf-8');
+const frontmatter = raw.split('---')[1];
+const data = yaml.load(frontmatter) as { milestones: { year: string; title: string; description: string; expanded: string }[] };
+const milestones = data.milestones;
+---
+
+<Base title="Timeline — Jeff">
+  <Nav />
+  <main class="container">
+    <div class="timeline-page">
+      <div class="section__label">Timeline</div>
+      <h1 class="section__heading">The journey so far.</h1>
+
+      <div class="timeline">
+        <div class="timeline__track">
+          <div class="timeline__line"></div>
+          {milestones.map((m, i) => (
+            <div class="timeline__milestone" style={`left: ${(i / (milestones.length - 1)) * 100}%`} data-index={i}>
+              <div class="timeline__dot"></div>
+              <div class={`timeline__card ${i % 2 === 0 ? 'timeline__card--above' : 'timeline__card--below'}`}>
+                <span class="timeline__year">{m.year}</span>
+                <h3 class="timeline__title">{m.title}</h3>
+                <p class="timeline__description">{m.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="timeline-mobile">
+        {milestones.map((m, i) => (
+          <div class="timeline-mobile__item" data-index={i}>
+            <div class="timeline-mobile__marker">
+              <span class="timeline-mobile__dot"></span>
+              <span class="timeline-mobile__line"></span>
+            </div>
+            <div class="timeline-mobile__content">
+              <span class="timeline-mobile__year">{m.year}</span>
+              <h3 class="timeline-mobile__title">{m.title}</h3>
+              <p class="timeline-mobile__description">{m.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Overlay -->
+      <div class="overlay" id="overlay">
+        <div class="overlay__card">
+          <button class="overlay__close" id="overlay-close" aria-label="Close">&times;</button>
+          <span class="overlay__year" id="overlay-year"></span>
+          <h2 class="overlay__title" id="overlay-title"></h2>
+          <p class="overlay__text" id="overlay-text"></p>
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Base>
+
+<script define:vars={{ milestones }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const overlay = document.getElementById('overlay');
+    const overlayYear = document.getElementById('overlay-year');
+    const overlayTitle = document.getElementById('overlay-title');
+    const overlayText = document.getElementById('overlay-text');
+    const overlayClose = document.getElementById('overlay-close');
+
+    function open(index) {
+      const m = milestones[index];
+      if (!m) return;
+      overlayYear.textContent = m.year;
+      overlayTitle.textContent = m.title;
+      overlayText.textContent = m.expanded;
+      overlay.classList.add('overlay--open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+      overlay.classList.remove('overlay--open');
+      document.body.style.overflow = '';
+    }
+
+    // Desktop milestones
+    document.querySelectorAll('.timeline__milestone').forEach(el => {
+      el.addEventListener('click', () => open(parseInt(el.dataset.index)));
+    });
+
+    // Mobile milestones
+    document.querySelectorAll('.timeline-mobile__item').forEach(el => {
+      el.addEventListener('click', () => open(parseInt(el.dataset.index)));
+    });
+
+    overlayClose.addEventListener('click', close);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') close();
+    });
+  });
+</script>
+
+<style>
+  .timeline-page {
+    padding-top: 8rem;
+    padding-bottom: var(--space-section);
+  }
+
+  /* ── Horizontal timeline (desktop) ── */
+
+  .timeline {
+    margin-top: var(--space-2xl);
+    padding: 10rem 2rem;
+    overflow-x: auto;
+    display: block;
+  }
+
+  .timeline__track {
+    position: relative;
+    min-width: 900px;
+    height: 0;
+  }
+
+  .timeline__line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-border-light);
+  }
+
+  .timeline__milestone {
+    position: absolute;
+    top: 0;
+    transform: translateX(-50%);
+    cursor: pointer;
+  }
+
+  .timeline__dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    border: 3px solid var(--color-bg);
+    box-shadow: 0 0 0 2px var(--color-accent);
+    position: absolute;
+    left: 50%;
+    top: -7px;
+    transform: translateX(-50%);
+    z-index: 2;
+    cursor: pointer;
+    transition: box-shadow var(--transition-base);
+  }
+
+  .timeline__milestone:hover .timeline__dot {
+    animation: pulse 1.2s ease-out infinite;
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 2px var(--color-accent); }
+    50% { box-shadow: 0 0 0 8px transparent; }
+    100% { box-shadow: 0 0 0 2px var(--color-accent); }
+  }
+
+  .timeline__card {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 160px;
+    text-align: center;
+  }
+
+  .timeline__card--above {
+    bottom: 24px;
+  }
+
+  .timeline__card--below {
+    top: 24px;
+  }
+
+  .timeline__year {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+
+  .timeline__title {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    line-height: 1.2;
+    margin-bottom: var(--space-xs);
+  }
+
+  .timeline__description {
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  /* ── Overlay ── */
+
+  .overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-base);
+  }
+
+  .overlay--open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .overlay__card {
+    background: var(--color-bg);
+    border: var(--border-style);
+    padding: var(--space-xl);
+    max-width: 520px;
+    width: 90%;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform var(--transition-base);
+  }
+
+  .overlay--open .overlay__card {
+    transform: translateY(0);
+  }
+
+  .overlay__close {
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    font-size: var(--text-xl);
+    cursor: pointer;
+    line-height: 1;
+    transition: color var(--transition-fast);
+  }
+
+  .overlay__close:hover {
+    color: var(--color-text);
+  }
+
+  .overlay__year {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-accent);
+    display: block;
+    margin-bottom: var(--space-sm);
+  }
+
+  .overlay__title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-md);
+  }
+
+  .overlay__text {
+    font-size: var(--text-base);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+  }
+
+  /* ── Vertical timeline (mobile) ── */
+
+  .timeline-mobile {
+    display: none;
+    margin-top: var(--space-xl);
+  }
+
+  .timeline-mobile__item {
+    display: flex;
+    gap: var(--space-md);
+    cursor: pointer;
+  }
+
+  .timeline-mobile__marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 14px;
+  }
+
+  .timeline-mobile__dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    border: 3px solid var(--color-bg);
+    box-shadow: 0 0 0 2px var(--color-accent);
+    flex-shrink: 0;
+    transition: box-shadow var(--transition-base);
+  }
+
+  .timeline-mobile__item:hover .timeline-mobile__dot {
+    animation: pulse 1.2s ease-out infinite;
+  }
+
+  .timeline-mobile__line {
+    width: 2px;
+    flex: 1;
+    background: var(--color-border-light);
+  }
+
+  .timeline-mobile__content {
+    padding-bottom: var(--space-lg);
+  }
+
+  .timeline-mobile__year {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+  }
+
+  .timeline-mobile__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    margin: var(--space-xs) 0;
+  }
+
+  .timeline-mobile__description {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .timeline {
+      display: none;
+    }
+    .timeline-mobile {
+      display: block;
+    }
+  }
+</style>

@@ -1,0 +1,101 @@
+---
+import yaml from 'js-yaml';
+import fs from 'node:fs';
+import path from 'node:path';
+
+const raw = fs.readFileSync(path.resolve('src/content/now.md'), 'utf-8');
+const frontmatter = raw.split('---')[1];
+const data = yaml.load(frontmatter) as { updated: string; items: { title: string; text: string; link?: string; linkText?: string; bold?: string }[] };
+
+function renderText(text: string, item: { link?: string; linkText?: string; bold?: string }): string {
+  let html = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  if (item.link && item.linkText) {
+    html = html.replace(item.linkText, `<a href="${item.link}" target="_blank" rel="noopener">${item.linkText}</a>`);
+  }
+  if (item.bold) {
+    html = html.replace(item.bold, `<strong>${item.bold}</strong>`);
+  }
+  return html;
+}
+---
+
+<section id="now" class="section">
+  <div class="container now__content">
+    <div class="section__label">Now</div>
+    <h2 class="section__heading">What I'm up to.</h2>
+
+    <div class="now__items">
+      {data.items.map(item => (
+        <div class="now__item">
+          <span class="now__marker"></span>
+          <div>
+            <h3 class="now__title">{item.title}</h3>
+            <p class="now__text" set:html={renderText(item.text, item)}></p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="now__updated">Updated {data.updated}</p>
+  </div>
+</section>
+
+<style>
+  .now__content {
+    max-width: 640px;
+  }
+
+  .now__items {
+    margin-top: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+
+  .now__item {
+    display: flex;
+    gap: var(--space-md);
+    align-items: start;
+  }
+
+  .now__marker {
+    margin-top: 0.5em;
+    width: 8px;
+    height: 8px;
+    min-width: 8px;
+    border: var(--border-width) solid var(--color-accent);
+    background: transparent;
+  }
+
+  .now__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    margin-bottom: var(--space-xs);
+  }
+
+  .now__text {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+  }
+
+  .now__text :global(a) {
+    color: var(--color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color var(--transition-fast);
+  }
+
+  .now__text :global(a:hover) {
+    color: var(--color-accent-hover);
+  }
+
+  .now__updated {
+    margin-top: var(--space-xl);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+  }
+</style>
