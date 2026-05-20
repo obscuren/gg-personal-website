@@ -660,6 +660,74 @@ header p {
   color: var(--muted);
   font-size: 12px;
 }
+/* ── ELECTRON CONFIG PANEL ── */
+#econfig-panel { padding: 16px 24px; overflow: hidden; height: calc(100vh - 88px); }
+#econfig-panel.active { display: flex; flex-direction: column; }
+#econfig-layout { display: grid; grid-template-columns: 240px 1fr; gap: 20px; flex: 1; min-height: 0; overflow: hidden; }
+#econfig-selector { display: flex; flex-direction: column; gap: 8px; border-right: 1px solid var(--border); padding-right: 16px; min-height: 0; overflow: hidden; }
+#econfig-search { width: 100%; background: var(--bg3); border: 1px solid var(--border2); border-radius: 6px; padding: 8px 12px; color: var(--text); font-family: 'DM Mono', monospace; font-size: 12px; }
+#econfig-search:focus { outline: none; border-color: var(--accent); }
+#econfig-search::placeholder { color: var(--muted); }
+#econfig-list { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 2px; min-height: 0; }
+.econfig-list-item { display: flex; align-items: center; gap: 10px; padding: 7px 10px; border-radius: 6px; cursor: pointer; border: 1px solid transparent; transition: background 0.12s, border-color 0.12s; }
+.econfig-list-item:hover { background: var(--bg3); }
+.econfig-list-item.active { background: var(--bg3); border-color: var(--accent); }
+.econfig-list-sym { font-size: 15px; font-weight: 500; padding: 2px 6px; border-radius: 4px; min-width: 34px; text-align: center; }
+.econfig-list-name { font-size: 12px; color: var(--text); }
+.econfig-list-n { font-size: 11px; color: var(--muted); margin-left: auto; }
+
+#econfig-display { overflow-y: auto; padding-right: 4px; min-height: 0; }
+#econfig-empty-state { color: var(--muted); font-size: 13px; margin-top: 60px; text-align: center; }
+#econfig-header { display: flex; align-items: center; gap: 16px; margin-bottom: 4px; }
+#econfig-sym-box { width: 64px; height: 64px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 500; flex-shrink: 0; }
+#econfig-name { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 600; color: var(--text); }
+#econfig-full-config { font-size: 13px; color: var(--accent); font-family: 'DM Mono', monospace; margin: 4px 0 2px; letter-spacing: 0.03em; }
+#econfig-shorthand { font-size: 11px; color: var(--muted); }
+
+#econfig-aufbau { display: flex; flex-direction: column; gap: 6px; }
+.aufbau-row { display: flex; align-items: center; gap: 8px; }
+.aufbau-label { font-size: 11px; color: var(--muted); width: 28px; text-align: right; flex-shrink: 0; }
+.aufbau-subshell { display: flex; align-items: center; gap: 2px; background: var(--bg3); border: 1px solid var(--border); border-radius: 6px; padding: 5px 8px; }
+.aufbau-subshell-name { font-size: 10px; color: var(--muted); margin-right: 4px; min-width: 20px; }
+.orbital-box { width: 22px; height: 28px; border-radius: 3px; border: 1px solid var(--border2); background: var(--bg4); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; }
+.orbital-box.full { border-color: var(--accent); background: rgba(78,204,163,0.08); }
+.orbital-box.half { border-color: var(--accent2); background: rgba(245,166,35,0.08); }
+.electron-arrow { width: 2px; height: 10px; border-radius: 1px; }
+.electron-arrow.up { background: var(--accent); }
+.electron-arrow.down { background: var(--accent2); transform: scaleY(-1); }
+.electron-arrow.empty { background: transparent; }
+
+#econfig-quantum { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.qn-card { background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 10px 12px; }
+.qn-label { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.qn-symbol { font-size: 18px; font-weight: 500; color: var(--accent); font-family: 'Fraunces', serif; font-style: italic; margin-bottom: 2px; }
+.qn-value { font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 2px; }
+.qn-meaning { font-size: 10px; color: var(--muted); line-height: 1.4; }
+
+#econfig-props-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 8px; }
+
+/* ── COMPOUND LIBRARY PANEL ── */
+#library-panel { padding: 16px 24px 24px; overflow-y: auto; height: calc(100vh - 88px); }
+#library-panel.active { display: block; }
+#library-layout { display: flex; flex-direction: column; gap: 12px; }
+#library-controls { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+#library-search { background: var(--bg3); border: 1px solid var(--border2); border-radius: 6px; padding: 7px 12px; color: var(--text); font-family: 'DM Mono', monospace; font-size: 12px; width: 220px; }
+#library-search:focus { outline: none; border-color: var(--accent); }
+#library-search::placeholder { color: var(--muted); }
+#library-filter-row { display: flex; gap: 6px; flex-wrap: wrap; }
+#library-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+.lib-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+.lib-card:hover { border-color: var(--border2); background: var(--bg3); }
+.lib-card-header { display: flex; align-items: baseline; gap: 10px; margin-bottom: 6px; }
+.lib-card-formula { font-family: 'Fraunces', serif; font-style: italic; font-size: 18px; color: var(--accent); }
+.lib-card-name { font-size: 12px; color: var(--text); font-weight: 500; }
+.lib-card-badge { font-size: 9px; padding: 2px 6px; border-radius: 10px; text-transform: uppercase; letter-spacing: 0.06em; margin-left: auto; flex-shrink: 0; }
+.lib-card-badge.yes { background: rgba(78,204,163,0.15); color: var(--accent); border: 1px solid rgba(78,204,163,0.3); }
+.lib-card-badge.no  { background: rgba(224,92,92,0.12); color: var(--danger); border: 1px solid rgba(224,92,92,0.25); }
+.lib-card-badge.maybe { background: rgba(245,166,35,0.12); color: var(--accent2); border: 1px solid rgba(245,166,35,0.25); }
+.lib-card-desc { font-size: 11px; color: var(--muted); line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.lib-card-uses { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+.lib-card-use { background: var(--bg4); border: 1px solid var(--border); border-radius: 3px; padding: 2px 6px; font-size: 10px; color: var(--muted); }
 </style>
 </head>
 <body>
@@ -672,6 +740,8 @@ header p {
 <div class="tabs">
   <button class="tab active" onclick="switchTab('pt')">Periodic Table</button>
   <button class="tab" onclick="switchTab('comb')">Compound Lab</button>
+  <button class="tab" onclick="switchTab('econfig')">Electron Config</button>
+  <button class="tab" onclick="switchTab('library')">Compound Library</button>
 </div>
 
 <!-- PERIODIC TABLE PANEL -->
@@ -781,6 +851,52 @@ header p {
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ELECTRON CONFIG PANEL -->
+<div id="econfig-panel" class="panel">
+  <div id="econfig-layout">
+    <div id="econfig-selector">
+      <div class="section-label" style="margin-bottom:10px;">Select element</div>
+      <input id="econfig-search" type="text" placeholder="Search element…" oninput="econfigSearch()" autocomplete="off">
+      <div id="econfig-list"></div>
+    </div>
+    <div id="econfig-display">
+      <div id="econfig-empty-state">Select an element on the left to explore its electron configuration.</div>
+      <div id="econfig-content" style="display:none">
+        <div id="econfig-header">
+          <div id="econfig-sym-box"></div>
+          <div>
+            <div id="econfig-name"></div>
+            <div id="econfig-full-config"></div>
+            <div id="econfig-shorthand"></div>
+          </div>
+        </div>
+        <div class="section-label" style="margin:16px 0 8px;">Aufbau orbital filling</div>
+        <div id="econfig-aufbau"></div>
+        <div class="section-label" style="margin:16px 0 8px;">Quantum numbers — outermost electron</div>
+        <div id="econfig-quantum"></div>
+        <div class="section-label" style="margin:16px 0 8px;">Properties</div>
+        <div id="econfig-props-row"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COMPOUND LIBRARY PANEL -->
+<div id="library-panel" class="panel">
+  <div id="library-layout">
+    <div id="library-controls">
+      <input id="library-search" type="text" placeholder="Search compounds…" oninput="renderLibrary()" autocomplete="off">
+      <div id="library-filter-row">
+        <button class="filter-btn active" data-lf="all" onclick="setLibFilter(this,'all')">All</button>
+        <button class="filter-btn" data-lf="yes" onclick="setLibFilter(this,'yes')">Exists</button>
+        <button class="filter-btn" data-lf="no" onclick="setLibFilter(this,'no')">Non-existent</button>
+        <button class="filter-btn" data-lf="maybe" onclick="setLibFilter(this,'maybe')">Unstable</button>
+      </div>
+    </div>
+    <div id="library-grid"></div>
   </div>
 </div>
 
@@ -1011,6 +1127,63 @@ const COMPOUNDS = {
   'K2SO4': { name:'Potassium sulfate', exists:'yes', desc:'Important potassium fertilizer used where chloride-sensitive crops are grown (tobacco, fruit trees, potatoes). Provides both potassium and sulfur, two essential plant nutrients.', props:{Appearance:'White crystals',Phase:'Solid',Molar_mass:'174.26 g/mol','Melting pt':'1069 °C',Density:'2.66 g/cm³'}, uses:['Fertilizer (potassium source)','Aluminum-potassium alum production','Cement setting retarder'] },
   'C': { name:'Carbon (pure)', exists:'yes', desc:'Pure carbon exists in multiple allotropes with dramatically different properties: diamond (hardest natural material, insulator), graphite (soft, conductor), graphene (strongest material known, 2D sheet), and fullerenes (C₆₀ — buckyballs).', props:{Allotropes:'Diamond, graphite, graphene, fullerene',Hardness:'10 Mohs (diamond) / 1–2 (graphite)',Molar_mass:'12.011 g/mol','Melting pt':'3550 °C (graphite)'}, uses:['Diamond (gems, cutting tools)','Graphite (pencils, electrodes)','Carbon fiber','Activated carbon (filtration)','Nuclear moderator'] },
   'Si': { name:'Silicon (pure)', exists:'yes', desc:'Pure silicon, once refined to 99.9999999% purity (nine nines), is the substrate of the semiconductor industry. Every CPU, GPU, and memory chip is carved from silicon wafers. The most transformative material of the 20th century.', props:{Appearance:'Dark grey crystalline solid',Molar_mass:'28.086 g/mol','Melting pt':'1414 °C','Boiling pt':'3265 °C',Density:'2.329 g/cm³',Band_gap:'1.11 eV'}, uses:['Semiconductor chips','Solar cells','Silicone precursor','Glass making','Alloys'] },
+  // Acids
+  'H2CO3': { name:'Carbonic acid', exists:'yes', desc:'Formed when CO₂ dissolves in water. Weak, unstable acid that gives carbonated drinks their fizz and slight tartness. In blood it\'s a critical pH buffer — carbonic anhydrase converts it to/from CO₂ at remarkable speed.', props:{Appearance:'Colorless solution',Phase:'Aqueous only',Molar_mass:'62.03 g/mol',pKa1:'6.35',pKa2:'10.33'}, uses:['Carbonated beverages','Blood pH buffering','CO₂ scrubbing'] },
+  'HClO4': { name:'Perchloric acid', exists:'yes', desc:'Strongest common acid. Concentrated solutions are dangerously oxidising and explosive. Used in rocket propellants (ammonium perchlorate) and analytical chemistry. Dilute solutions are safer and used as electrolytes.', props:{Appearance:'Colorless liquid',Phase:'Liquid',Molar_mass:'100.46 g/mol','Melting pt':'-112 °C','Boiling pt':'203 °C',Density:'1.77 g/cm³'}, uses:['Rocket propellant precursor','Analytical chemistry','Electroplating electrolyte'] },
+  'H2CrO4': { name:'Chromic acid', exists:'yes', desc:'Powerful oxidising agent formed from chromium trioxide in water. Used to clean laboratory glassware and electroplate metals. Carcinogenic and environmentally hazardous — increasingly replaced by safer alternatives.', props:{Appearance:'Red-orange solution',Phase:'Aqueous',Molar_mass:'118.01 g/mol'}, uses:['Glassware cleaning','Chrome electroplating','Organic oxidation'] },
+  // Metal halides
+  'NaBr': { name:'Sodium bromide', exists:'yes', desc:'White salt historically used as a sedative. Today essential in oil drilling fluids to control well pressure, and used to make photographic emulsions and pharmaceuticals.', props:{Appearance:'White crystals',Phase:'Solid',Molar_mass:'102.89 g/mol','Melting pt':'747 °C','Boiling pt':'1390 °C',Density:'3.21 g/cm³'}, uses:['Oil drilling fluid','Pharmaceuticals','Photography','Pool sanitizer'] },
+  'KBr': { name:'Potassium bromide', exists:'yes', desc:'Colorless crystalline salt. Used as a veterinary anticonvulsant and historically as a sedative/anticonvulsant in humans. Also used in infrared spectroscopy as a transparent window material.', props:{Appearance:'White crystals',Phase:'Solid',Molar_mass:'119.00 g/mol','Melting pt':'734 °C','Boiling pt':'1435 °C',Density:'2.74 g/cm³'}, uses:['Veterinary anticonvulsant','IR spectroscopy windows','Photography'] },
+  'MgSO4': { name:'Magnesium sulfate (Epsom salt)', exists:'yes', desc:'As Epsom salt, dissolved in warm baths to soothe muscles — though clinical evidence is debated. More importantly, it\'s injected intravenously to prevent eclamptic seizures in pregnant women, saving thousands of lives annually.', props:{Appearance:'White crystals',Phase:'Solid',Molar_mass:'120.37 g/mol','Melting pt':'1124 °C',Density:'2.66 g/cm³'}, uses:['Bath salts (muscle relief)','Eclampsia treatment (IV)','Fertilizer','Laxative','Tofu coagulant'] },
+  'BaSO4': { name:'Barium sulfate', exists:'yes', desc:'Insoluble white powder — unlike most barium compounds it\'s non-toxic because it doesn\'t dissolve. Swallowed as a "barium meal" for GI tract X-ray imaging; used as white pigment in paints and as a weighting agent in oil drilling fluids.', props:{Appearance:'White powder',Phase:'Solid',Molar_mass:'233.39 g/mol','Melting pt':'1580 °C',Density:'4.50 g/cm³',Solubility:'Nearly insoluble'}, uses:['Medical imaging (barium meal)','White pigment','Oil drilling weighting','Radiation shielding'] },
+  'CaSO4': { name:'Calcium sulfate (Gypsum)', exists:'yes', desc:'Gypsum — one of the most widely used minerals. Hemihydrate (plaster of Paris) sets hard when mixed with water. Used in drywall (wallboard), cement retarder, chalk, and as a soil conditioner in agriculture.', props:{Appearance:'White solid',Phase:'Solid',Molar_mass:'136.14 g/mol','Melting pt':'1460 °C',Density:'2.32 g/cm³'}, uses:['Drywall/plasterboard','Cement retarder','Plaster of Paris','Soil conditioner','Chalk'] },
+  // Carbon compounds
+  'C2H2': { name:'Acetylene (Ethyne)', exists:'yes', desc:'Simplest alkyne with a C≡C triple bond. Burns at 3500°C in oxygen — the hottest chemical flame, used in oxy-acetylene welding and cutting. Also the starting material for vinyl chloride (PVC) and many plastics.', props:{Appearance:'Colorless gas',Phase:'Gas',Molar_mass:'26.04 g/mol','Melting pt':'-80.8 °C','Boiling pt':'-84.0 °C',Density:'0.00109 g/cm³'}, uses:['Welding and cutting (oxy-acetylene)','PVC precursor','Synthetic rubber','Lighting (carbide lamps)'] },
+  'C2H4': { name:'Ethylene (Ethene)', exists:'yes', desc:'Most produced organic chemical globally (~200M tons/year). Ripens fruit — commercially used to ripen bananas and tomatoes. Polymerises to polyethylene (PE), the world\'s most common plastic. Also a plant hormone.', props:{Appearance:'Colorless gas',Phase:'Gas',Molar_mass:'28.05 g/mol','Melting pt':'-169.2 °C','Boiling pt':'-103.7 °C',Density:'0.00126 g/cm³'}, uses:['Polyethylene (PE plastic)','Fruit ripening','Antifreeze (via ethylene glycol)','Vinyl chloride precursor'] },
+  'C3H8': { name:'Propane', exists:'yes', desc:'LPG (liquefied petroleum gas) — stored as liquid under modest pressure, vaporises for cooking and heating. Used in rural areas without natural gas pipelines. Also fuels portable torches and is a refrigerant.', props:{Appearance:'Colorless gas',Phase:'Gas (liquid under pressure)',Molar_mass:'44.10 g/mol','Melting pt':'-187.7 °C','Boiling pt':'-42.1 °C',Density:'0.00197 g/cm³'}, uses:['Cooking fuel (LPG)','Heating','Portable torches','Refrigerant (R-290)'] },
+  'C6H6': { name:'Benzene', exists:'yes', desc:'Archetypal aromatic compound — a planar ring of six carbons with delocalised electrons. Sweet smell, carcinogenic. Once used as a solvent and in leaded petrol; now tightly regulated. The starting point for most pharmaceutical and dye synthesis.', props:{Appearance:'Clear liquid',Phase:'Liquid',Molar_mass:'78.11 g/mol','Melting pt':'5.5 °C','Boiling pt':'80.1 °C',Density:'0.879 g/cm³'}, uses:['Chemical feedstock (styrene, nylon)','Pharmaceutical synthesis','Dye precursor','Rubber synthesis'] },
+  'CH2O': { name:'Formaldehyde', exists:'yes', desc:'Simplest aldehyde. Preserves biological tissue — used in embalming and lab specimens. Forms resin with phenol (Bakelite, 1907 — first synthetic plastic). IARC Group 1 carcinogen. Naturally produced in small amounts by metabolism.', props:{Appearance:'Colorless gas',Phase:'Gas (37% solution = formalin)',Molar_mass:'30.03 g/mol','Melting pt':'-92 °C','Boiling pt':'-19 °C',Density:'0.00132 g/cm³'}, uses:['Tissue preservation (formalin)','Bakelite/urea-formaldehyde resins','Disinfectant','Plywood adhesive'] },
+  'CH3COOH': { name:'Acetic acid (Vinegar)', exists:'yes', desc:'The acid that makes vinegar sour (~5% solution). Pure glacial acetic acid is corrosive. Produced industrially by methanol carbonylation (Monsanto process). Used to make PET plastic (via acetic anhydride) and aspirin (acetylsalicylic acid).', props:{Appearance:'Colorless liquid',Phase:'Liquid',Molar_mass:'60.05 g/mol','Melting pt':'16.6 °C','Boiling pt':'118.1 °C',Density:'1.049 g/cm³'}, uses:['Vinegar','PET plastic precursor','Aspirin synthesis','Solvent','Food preservative (E260)'] },
+  'C3H6O': { name:'Acetone', exists:'yes', desc:'Most common ketone. Nail polish remover. Miscible with water and nearly every organic solvent. Body produces it during ketosis (fat metabolism) — ketone breath is acetone. Explosive vapour — industrial hygiene essential.', props:{Appearance:'Colorless liquid',Phase:'Liquid',Molar_mass:'58.08 g/mol','Melting pt':'-94.7 °C','Boiling pt':'56.1 °C',Density:'0.791 g/cm³'}, uses:['Nail polish remover','Solvent','Plastic/resin dissolving','Drug synthesis','Cleaning agent'] },
+  'C2H3N': { name:'Acetonitrile', exists:'yes', desc:'Most important nitrile solvent. Polarity and low viscosity make it ideal for HPLC (liquid chromatography). Also used in pharma synthesis and as a ligand in metal complexes.', props:{Appearance:'Colorless liquid',Phase:'Liquid',Molar_mass:'41.05 g/mol','Melting pt':'-45.7 °C','Boiling pt':'82.0 °C',Density:'0.786 g/cm³'}, uses:['HPLC solvent','Pharmaceutical synthesis','Battery electrolyte','Extractant'] },
+  // Metal oxides and sulfides
+  'FeS2': { name:'Iron pyrite (Fool\'s gold)', exists:'yes', desc:'Metallic brassy mineral that fooled many gold-seekers. Semiconducting — being studied for cheap solar cells. Historically used to produce sulfur dioxide for sulfuric acid production. Striking with steel produces sparks, so used in early firearms flintlocks.', props:{Appearance:'Brassy yellow crystals',Phase:'Solid',Molar_mass:'119.98 g/mol','Melting pt':'~1180 °C',Density:'5.01 g/cm³'}, uses:['Sulfuric acid production','Semiconductor research','Decorative mineral','Historical firearm ignition'] },
+  'Cu2S': { name:'Copper(I) sulfide (Chalcocite)', exists:'yes', desc:'Important copper ore mineral. Black solid. Formed when copper is exposed to sulfur. Roasting in air converts it to copper oxide for smelting. Semiconductor with direct bandgap — investigated for solar cells.', props:{Appearance:'Dark grey/black',Phase:'Solid',Molar_mass:'159.16 g/mol','Melting pt':'1130 °C',Density:'5.6 g/cm³'}, uses:['Copper ore (smelting)','Solar cell research','Semiconductor'] },
+  'ZnS': { name:'Zinc sulfide', exists:'yes', desc:'Phosphorescent — glows after UV exposure, or continuously when doped with copper. Used in older CRT phosphors, watch dials, and X-ray screens. Two crystal forms: zinc blende (sphalerite) and wurtzite.', props:{Appearance:'White solid',Phase:'Solid',Molar_mass:'97.46 g/mol','Melting pt':'1700 °C',Density:'4.09 g/cm³'}, uses:['Phosphorescent paint','CRT phosphors','Infrared optics','Zinc ore'] },
+  'PbS': { name:'Lead sulfide (Galena)', exists:'yes', desc:'The principal ore of lead. Dense, metallic grey mineral. Historically used as eye kohl in ancient Egypt. Galena crystals were used as the detector in early "cat\'s whisker" crystal radios. Lead-207 from its decay is used in age-dating.', props:{Appearance:'Metallic grey',Phase:'Solid',Molar_mass:'239.27 g/mol','Melting pt':'1118 °C',Density:'7.60 g/cm³'}, uses:['Lead ore','Crystal radio detectors (historical)','IR detector material'] },
+  'Ag2S': { name:'Silver sulfide (Acanthite)', exists:'yes', desc:'The black tarnish on silver — formed by reaction with atmospheric hydrogen sulfide. The most stable silver compound. Semiconductor used in photovoltaics and as a solid electrolyte in batteries.', props:{Appearance:'Black solid',Phase:'Solid',Molar_mass:'247.80 g/mol','Melting pt':'845 °C',Density:'7.23 g/cm³'}, uses:['Silver ore','Solar cells','Solid-state batteries'] },
+  // Atmospheric / industrial gases
+  'SF6': { name:'Sulfur hexafluoride', exists:'yes', desc:'Dense, colourless, odourless gas — breathe it and your voice drops an octave (opposite of helium). Excellent electrical insulator used in high-voltage switchgear. Unfortunately also one of the most potent greenhouse gases known (23,500× CO₂ over 100 years).', props:{Appearance:'Colorless gas',Phase:'Gas',Molar_mass:'146.06 g/mol','Boiling pt':'-63.8 °C',Density:'0.00625 g/cm³',GWP:'23,500 (100yr)'}, uses:['High-voltage insulation','Voice-deepening demo','Tracer gas','Magnesium casting'] },
+  'PH3': { name:'Phosphine', exists:'yes', desc:'Highly toxic, colourless gas smelling of rotting fish. Produced naturally in swamps (may cause will-o-the-wisp). Used as a fumigant for stored grain. Detected in Venus\'s atmosphere in 2020 — briefly (controversially) suggested as a biosignature.', props:{Appearance:'Colorless gas',Phase:'Gas',Molar_mass:'33.997 g/mol','Melting pt':'-133 °C','Boiling pt':'-87.7 °C',Density:'0.00139 g/cm³'}, uses:['Grain fumigant','Semiconductor doping','Chemical weapon (WWI)','Venus atmosphere (detected 2020)'] },
+  'AsH3': { name:'Arsine', exists:'yes', desc:'Extremely toxic gas — among the most acutely poisonous substances known. Used in semiconductor manufacturing to dope silicon with arsenic (n-type). The Marsh test for arsenic poisoning converts arsenic compounds to arsine.', props:{Appearance:'Colorless gas',Phase:'Gas',Molar_mass:'77.95 g/mol','Melting pt':'-116 °C','Boiling pt':'-62.5 °C',Density:'0.00335 g/cm³'}, uses:['Semiconductor doping (n-type)','Marsh test for arsenic','Chemical warfare agent'] },
+  'BF3': { name:'Boron trifluoride', exists:'yes', desc:'Trigonal planar Lewis acid — one of the strongest known. The empty p orbital on boron accepts electron pairs voraciously. Used as a catalyst in Friedel-Crafts reactions and polymer synthesis. Reacts with water to form corrosive fluoroboric acid.', props:{Appearance:'Colorless gas',Phase:'Gas',Molar_mass:'67.81 g/mol','Melting pt':'-126.8 °C','Boiling pt':'-100.3 °C',Density:'0.00296 g/cm³'}, uses:['Lewis acid catalyst','Polymer synthesis','NMR reference','Neutron detector'] },
+  'BCl3': { name:'Boron trichloride', exists:'yes', desc:'Trigonal planar Lewis acid. Used in semiconductor manufacturing to deposit boron (p-type doping) via CVD. Reacts violently with water. Used to produce pure boron metal and organoboron compounds.', props:{Appearance:'Colorless gas',Phase:'Gas',Molar_mass:'117.17 g/mol','Melting pt':'-107.3 °C','Boiling pt':'12.6 °C',Density:'0.00484 g/cm³'}, uses:['Semiconductor CVD doping','Pure boron production','Catalyst','Soldering flux'] },
+  // Biological / pharmaceutical
+  'C9H8O4': { name:'Aspirin (Acetylsalicylic acid)', exists:'yes', desc:'World\'s most consumed drug. Synthesised by Felix Hoffmann at Bayer in 1897. Inhibits COX-1 and COX-2 enzymes, reducing prostaglandin synthesis — analgesic, antipyretic, anti-inflammatory. Low-dose aspirin irreversibly inhibits platelet aggregation, preventing heart attacks.', props:{Appearance:'White crystals',Phase:'Solid',Molar_mass:'180.16 g/mol','Melting pt':'135 °C',Density:'1.40 g/cm³'}, uses:['Pain relief','Fever reduction','Anti-inflammatory','Heart attack prevention (low dose)'] },
+  'C8H9NO2': { name:'Paracetamol (Acetaminophen)', exists:'yes', desc:'Most widely used OTC analgesic and antipyretic. Mechanism still debated — likely inhibits COX-3 in the CNS. Safe at therapeutic doses; overdose causes fatal liver failure by depleting glutathione and forming toxic NAPQI. Antidote: N-acetylcysteine.', props:{Appearance:'White crystals',Phase:'Solid',Molar_mass:'151.16 g/mol','Melting pt':'168 °C',Density:'1.263 g/cm³'}, uses:['Pain relief','Fever reduction','Cold/flu medication'] },
+  'C6H12O6_fructose': { name:'Fructose', exists:'yes', desc:'Sweetest naturally occurring sugar — 1.7× sweeter than glucose. Found in fruit and honey. Metabolised differently from glucose: goes directly to the liver. High fructose corn syrup (HFCS) controversy stems from liver\'s conversion of excess fructose to fat.', props:{Appearance:'White crystals',Phase:'Solid',Molar_mass:'180.16 g/mol','Melting pt':'103 °C',Density:'1.694 g/cm³',Sweetness:'1.7× glucose'}, uses:['Sweetener','HFCS production','Pharmaceutical excipient','IV nutrition'] },
+  'C2H4O2': { name:'Glycolaldehyde', exists:'yes', desc:'Simplest sugar — a two-carbon monosaccharide. Found in interstellar space near star-forming regions, suggesting sugars predate Earth. May have played a role in the origin of life via the formose reaction to form ribose (RNA backbone).', props:{Appearance:'White crystals',Phase:'Solid',Molar_mass:'60.05 g/mol','Melting pt':'97 °C'}, uses:['Prebiotic chemistry research','Tanning leather (crosslinking)','Synthetic intermediate'] },
+  // Polymers / materials
+  'C2H4_poly': { name:'Polyethylene (PE)', exists:'yes', desc:'World\'s most produced plastic (~100M tons/year). From grocery bags (LDPE) to bulletproof vests (UHMWPE). Discovered accidentally by ICI chemists in 1933. Chemically inert, lightweight, cheap. Persistence in environment driving major recycling challenges.', props:{Appearance:'White/translucent solid',Phase:'Solid',Density:'0.88–0.97 g/cm³','Melting pt':'115–135 °C (varies)'}, uses:['Plastic bags','Bottles','Pipes','Bulletproof vests (UHMWPE)','Plastic film'] },
+  'C3H6_poly': { name:'Polypropylene (PP)', exists:'yes', desc:'Second most produced plastic. Stiffer than PE, higher melting point. The living hinge — polypropylene can flex millions of times without breaking — is used in bottle caps. Marked with recycling symbol ♴ (5).', props:{Appearance:'White solid',Phase:'Solid',Density:'0.895–0.92 g/cm³','Melting pt':'130–171 °C'}, uses:['Bottle caps','Food containers','Car parts','Rope','Medical syringes'] },
+  // Nitrides and carbides
+  'Si3N4': { name:'Silicon nitride', exists:'yes', desc:'Extremely hard ceramic. Used in high-performance bearings in jet engines and turbines — lighter than steel, harder than most metals, and self-lubricating. Also used in cutting tools, dental implants, and as an insulator in microelectronics.', props:{Appearance:'Grey/white powder',Phase:'Solid',Molar_mass:'140.28 g/mol','Melting pt':'1900 °C (decomposes)',Density:'3.17 g/cm³',Hardness:'9+ Mohs'}, uses:['Jet engine bearings','Cutting tools','Dental implants','Semiconductor insulator'] },
+  'WC': { name:'Tungsten carbide', exists:'yes', desc:'Harder than hardened steel, nearly as hard as diamond. Used in cutting tools, mining drill bits, and armour-piercing projectiles. The "carbide" tips on saw blades and drill bits are almost always tungsten carbide. Density close to gold.', props:{Appearance:'Grey metallic solid',Phase:'Solid',Molar_mass:'195.85 g/mol','Melting pt':'2870 °C',Density:'15.63 g/cm³',Hardness:'9–9.5 Mohs'}, uses:['Cutting tools','Drill bits','Armour-piercing rounds','Mining equipment','Jewellery'] },
+  'TiN': { name:'Titanium nitride', exists:'yes', desc:'Gold-coloured hard ceramic coating. Applied to drill bits and cutting tools by physical vapour deposition — the gold-coloured drill bits in hardware stores. Also used to coat medical implants and as a decorative finish on watches.', props:{Appearance:'Gold-coloured solid',Phase:'Solid',Molar_mass:'61.87 g/mol','Melting pt':'2930 °C',Density:'5.22 g/cm³',Hardness:'8–9 Mohs'}, uses:['Cutting tool coating','Medical implant coating','Decorative finish','Semiconductor barrier layer'] },
+  'BN': { name:'Boron nitride', exists:'yes', desc:'Structural analogue of carbon — hexagonal BN (h-BN) resembles graphite; cubic BN (c-BN) resembles diamond and is the second hardest material known. h-BN is used in cosmetics as a skin-smoothing agent and as a 2D material in electronics.', props:{Appearance:'White solid',Phase:'Solid',Molar_mass:'24.82 g/mol','Melting pt':'2973 °C',Density:'2.10 (hex) / 3.48 (cubic) g/cm³'}, uses:['Cosmetics (h-BN)','Lubricant','2D electronics (h-BN)','Cutting tools (c-BN)','Refractory material'] },
+  // Minerals
+  'CaF2': { name:'Calcium fluoride (Fluorite)', exists:'yes', desc:'Fluorite — gives name to fluorescence (fluoresces vividly under UV). Optically transparent from UV to infrared — ideal for camera lenses. Major source of fluorine for HF production. Purple and green varieties are semi-precious gemstones.', props:{Appearance:'Colourless/purple/green crystals',Phase:'Solid',Molar_mass:'78.07 g/mol','Melting pt':'1418 °C',Density:'3.18 g/cm³',Hardness:'4 Mohs'}, uses:['Optical lenses (UV-IR transparent)','HF production (fluorspar)','Flux in metallurgy','Gemstone','Toothpaste'] },
+  'Na3PO4': { name:'Trisodium phosphate (TSP)', exists:'yes', desc:'Strong alkaline cleaner — dissolves grease and prepares surfaces for painting. Once common in dishwasher detergents but banned in many regions due to eutrophication of waterways. Also a food additive for adjusting acidity and as an emulsifier in processed cheese.', props:{Appearance:'White powder',Phase:'Solid',Molar_mass:'163.94 g/mol','Melting pt':'75 °C (dodecahydrate)',Density:'2.54 g/cm³',pH:'~12 (1% solution)'}, uses:['Heavy-duty cleaning','Paint preparation','Food additive (E339)','Meat processing'] },
+  'Ca3PO42': { name:'Calcium phosphate', exists:'yes', desc:'The main mineral in bones and teeth — hydroxyapatite is a form of calcium phosphate. Synthetic hydroxyapatite is used as bone graft material. Also used as a food additive, fertilizer, and in toothpaste as a gentle abrasive and remineraliser.', props:{Appearance:'White powder',Phase:'Solid',Molar_mass:'310.18 g/mol','Melting pt':'1670 °C',Density:'3.14 g/cm³'}, uses:['Bone graft material','Toothpaste','Fertilizer','Food additive (E341)','Antacid'] },
+  'LiOH': { name:'Lithium hydroxide', exists:'yes', desc:'Strong base. In submarine and spacecraft life support systems, LiOH canisters absorb exhaled CO₂ (LiOH + CO₂ → Li₂CO₃ + H₂O). Also used to make lithium greases and as an electrolyte additive in lithium-ion batteries.', props:{Appearance:'White solid',Phase:'Solid',Molar_mass:'23.95 g/mol','Melting pt':'462 °C','Boiling pt':'924 °C',Density:'1.46 g/cm³'}, uses:['CO₂ scrubber (submarines/spacecraft)','Lithium battery additive','Grease manufacture','Ceramics'] },
+  'Li2CO3': { name:'Lithium carbonate', exists:'yes', desc:'Psychiatric medication — mood stabiliser for bipolar disorder since 1949. Exactly how it works remains debated after 75 years. Also used in glass and ceramics to lower melting point, and as a precursor in lithium battery cathode manufacturing.', props:{Appearance:'White powder',Phase:'Solid',Molar_mass:'73.89 g/mol','Melting pt':'723 °C',Density:'2.11 g/cm³'}, uses:['Bipolar disorder treatment','Lithium battery precursor','Glass/ceramics','Aluminium smelting flux'] },
+  'Na2O': { name:'Sodium oxide', exists:'yes', desc:'Reacts instantly and violently with water to form NaOH. Not found naturally. Used as a flux in glass making — soda-lime glass is ~15% Na₂O. Formed as an intermediate in sodium combustion.', props:{Appearance:'White solid',Phase:'Solid',Molar_mass:'61.98 g/mol','Melting pt':'1132 °C',Density:'2.27 g/cm³'}, uses:['Glass manufacture (as flux)','Chemical intermediate'] },
+  'K2O': { name:'Potassium oxide', exists:'yes', desc:'Highly reactive with water, forming KOH. The "K" in NPK fertiliser ratings refers to potassium oxide equivalent. Not found free in nature but formed transiently in potassium combustion.', props:{Appearance:'Yellow/white solid',Phase:'Solid',Molar_mass:'94.20 g/mol','Melting pt':'~740 °C (decomposes)',Density:'2.35 g/cm³'}, uses:['Fertilizer rating (K₂O equiv.)','Glass flux','Chemical intermediate'] },
+  'Mn2O3': { name:'Manganese(III) oxide', exists:'yes', desc:'Black mineral (bixbyite). Intermediate in manganese chemistry. Used as a pigment, in electronics as a p-type semiconductor, and occurs naturally in some mineral deposits alongside MnO₂.', props:{Appearance:'Black powder',Phase:'Solid',Molar_mass:'157.87 g/mol','Melting pt':'940 °C (decomposes)',Density:'4.50 g/cm³'}, uses:['Black pigment','Semiconductor','Catalyst'] },
+  'Cr2O3': { name:'Chromium(III) oxide', exists:'yes', desc:'Viridian — vivid green pigment used since antiquity. Extremely stable, lightfast. Used in artists\' paints, eyeshadow, and to colour glass and ceramics. Also forms the passive oxide layer protecting stainless steel from corrosion.', props:{Appearance:'Dark green powder',Phase:'Solid',Molar_mass:'151.99 g/mol','Melting pt':'2435 °C',Density:'5.22 g/cm³',Hardness:'8–9 Mohs'}, uses:['Green pigment (viridian)','Abrasive (green chrome)','Refractory material','Stainless steel passivation'] },
+  'V2O5': { name:'Vanadium pentoxide', exists:'yes', desc:'The most important vanadium compound commercially. The Contact Process catalyst for sulfuric acid production. Also the cathode material in vanadium redox flow batteries — potentially key for grid-scale energy storage. Toxic dust.', props:{Appearance:'Orange-red powder',Phase:'Solid',Molar_mass:'181.88 g/mol','Melting pt':'690 °C',Density:'3.36 g/cm³'}, uses:['H₂SO₄ production catalyst','Vanadium battery cathode','Ceramics','Mordant in dyeing'] },
+  'MoS2': { name:'Molybdenum disulfide', exists:'yes', desc:'Layered structure like graphite — sheets slide easily over each other, making it an excellent dry lubricant. Used in grease, CV joints, and high-vacuum environments where oil lubricants would evaporate or degrade. Also a 2D semiconductor.', props:{Appearance:'Black/grey powder',Phase:'Solid',Molar_mass:'160.07 g/mol','Melting pt':'1185 °C',Density:'5.06 g/cm³'}, uses:['Dry lubricant (grease additive)','CV joint lubricant','2D semiconductor','Hydrodesulfurization catalyst'] },
+  'WO3': { name:'Tungsten trioxide', exists:'yes', desc:'Electrochromic material — changes from transparent to deep blue when a small voltage is applied, then reverts when reversed. Used in smart windows that tint on demand. Also the precursor to tungsten metal via hydrogen reduction.', props:{Appearance:'Yellow powder',Phase:'Solid',Molar_mass:'231.84 g/mol','Melting pt':'1472 °C',Density:'7.16 g/cm³'}, uses:['Smart electrochromic windows','Tungsten metal production','Photocatalyst','Gas sensor'] },
 };
 
 // Canonicalize formula for lookup
@@ -1228,6 +1401,7 @@ function drawBohr(el, color) {
 
 
 let ptSelectedEl = null;
+let ptFilter = 'all';
 
 function buildPT() {
   const grid = document.getElementById('pt-grid');
@@ -1357,7 +1531,7 @@ function applyPTFilter() {
 function filterPT() { applyPTFilter(); }
 
 function setFilter(btn, f) {
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('#pt-panel .filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   ptFilter = f;
   applyPTFilter();
@@ -1714,6 +1888,210 @@ const MOL_STRUCTS = {
     atoms3d: [{sym:'K',x:-2.0,y:0,z:0},{sym:'N',x:0.3,y:0,z:0},{sym:'O',x:0.3,y:-1.2,z:0},{sym:'O',x:1.4,y:0.6,z:0},{sym:'O',x:-0.8,y:0.6,z:0}],
     bonds3d: [{a:1,b:2},{a:1,b:3},{a:1,b:4}]
   },
+  'H2CO3': {
+    atoms2d: [{sym:'C',x:0,y:0},{sym:'O',x:0,y:-1.2},{sym:'O',x:-1.1,y:0.6},{sym:'O',x:1.1,y:0.6},{sym:'H',x:-1.9,y:0.6},{sym:'H',x:1.9,y:0.6}],
+    bonds2d: [{a:0,b:1,o:2},{a:0,b:2,o:1},{a:0,b:3,o:1},{a:2,b:4,o:1},{a:3,b:5,o:1}],
+    atoms3d: [{sym:'C',x:0,y:0,z:0},{sym:'O',x:0,y:-1.2,z:0},{sym:'O',x:-1.1,y:0.6,z:0},{sym:'O',x:1.1,y:0.6,z:0},{sym:'H',x:-1.9,y:0.6,z:0},{sym:'H',x:1.9,y:0.6,z:0}],
+    bonds3d: [{a:0,b:1},{a:0,b:2},{a:0,b:3},{a:2,b:4},{a:3,b:5}]
+  },
+  'NaBr': {
+    atoms2d: [{sym:'Na',x:-0.8,y:0},{sym:'Br',x:0.8,y:0}],
+    bonds2d: [{a:0,b:1,o:1}],
+    atoms3d: [{sym:'Na',x:-0.8,y:0,z:0},{sym:'Br',x:0.8,y:0,z:0}],
+    bonds3d: [{a:0,b:1}]
+  },
+  'KBr': {
+    atoms2d: [{sym:'K',x:-0.8,y:0},{sym:'Br',x:0.8,y:0}],
+    bonds2d: [{a:0,b:1,o:1}],
+    atoms3d: [{sym:'K',x:-0.8,y:0,z:0},{sym:'Br',x:0.8,y:0,z:0}],
+    bonds3d: [{a:0,b:1}]
+  },
+  'MgSO4': {
+    atoms2d: [{sym:'Mg',x:-2.0,y:0},{sym:'S',x:0,y:0},{sym:'O',x:0,y:-1.2},{sym:'O',x:1.2,y:0},{sym:'O',x:0,y:1.2},{sym:'O',x:-1.2,y:0}],
+    bonds2d: [{a:1,b:2,o:2},{a:1,b:3,o:1},{a:1,b:4,o:1},{a:1,b:5,o:1},{a:0,b:5,o:1}],
+    atoms3d: [{sym:'Mg',x:-2.0,y:0,z:0},{sym:'S',x:0,y:0,z:0},{sym:'O',x:0,y:-1.2,z:0.4},{sym:'O',x:1.2,y:0,z:-0.4},{sym:'O',x:0,y:1.2,z:0.4},{sym:'O',x:-1.2,y:0,z:-0.4}],
+    bonds3d: [{a:0,b:5},{a:1,b:2},{a:1,b:3},{a:1,b:4},{a:1,b:5}]
+  },
+  'BaSO4': {
+    atoms2d: [{sym:'Ba',x:-2.2,y:0},{sym:'S',x:0,y:0},{sym:'O',x:0,y:-1.2},{sym:'O',x:1.2,y:0},{sym:'O',x:0,y:1.2},{sym:'O',x:-1.2,y:0}],
+    bonds2d: [{a:1,b:2,o:2},{a:1,b:3,o:1},{a:1,b:4,o:1},{a:1,b:5,o:1}],
+    atoms3d: [{sym:'Ba',x:-2.2,y:0,z:0},{sym:'S',x:0,y:0,z:0},{sym:'O',x:0,y:-1.2,z:0.4},{sym:'O',x:1.2,y:0,z:-0.4},{sym:'O',x:0,y:1.2,z:0.4},{sym:'O',x:-1.2,y:0,z:-0.4}],
+    bonds3d: [{a:1,b:2},{a:1,b:3},{a:1,b:4},{a:1,b:5}]
+  },
+  'CaSO4': {
+    atoms2d: [{sym:'Ca',x:-2.2,y:0},{sym:'S',x:0,y:0},{sym:'O',x:0,y:-1.2},{sym:'O',x:1.2,y:0},{sym:'O',x:0,y:1.2},{sym:'O',x:-1.2,y:0}],
+    bonds2d: [{a:1,b:2,o:2},{a:1,b:3,o:1},{a:1,b:4,o:1},{a:1,b:5,o:1}],
+    atoms3d: [{sym:'Ca',x:-2.2,y:0,z:0},{sym:'S',x:0,y:0,z:0},{sym:'O',x:0,y:-1.2,z:0.4},{sym:'O',x:1.2,y:0,z:-0.4},{sym:'O',x:0,y:1.2,z:0.4},{sym:'O',x:-1.2,y:0,z:-0.4}],
+    bonds3d: [{a:1,b:2},{a:1,b:3},{a:1,b:4},{a:1,b:5}]
+  },
+  'C2H2': {
+    atoms2d: [{sym:'H',x:-1.8,y:0},{sym:'C',x:-0.6,y:0},{sym:'C',x:0.6,y:0},{sym:'H',x:1.8,y:0}],
+    bonds2d: [{a:0,b:1,o:1},{a:1,b:2,o:3},{a:2,b:3,o:1}],
+    atoms3d: [{sym:'H',x:-1.8,y:0,z:0},{sym:'C',x:-0.6,y:0,z:0},{sym:'C',x:0.6,y:0,z:0},{sym:'H',x:1.8,y:0,z:0}],
+    bonds3d: [{a:0,b:1},{a:1,b:2},{a:2,b:3}]
+  },
+  'C2H4': {
+    atoms2d: [{sym:'H',x:-1.8,y:0.9},{sym:'H',x:-1.8,y:-0.9},{sym:'C',x:-0.67,y:0},{sym:'C',x:0.67,y:0},{sym:'H',x:1.8,y:0.9},{sym:'H',x:1.8,y:-0.9}],
+    bonds2d: [{a:0,b:2,o:1},{a:1,b:2,o:1},{a:2,b:3,o:2},{a:3,b:4,o:1},{a:3,b:5,o:1}],
+    atoms3d: [{sym:'H',x:-1.8,y:0.9,z:0.1},{sym:'H',x:-1.8,y:-0.9,z:0.1},{sym:'C',x:-0.67,y:0,z:0},{sym:'C',x:0.67,y:0,z:0},{sym:'H',x:1.8,y:0.9,z:0.1},{sym:'H',x:1.8,y:-0.9,z:0.1}],
+    bonds3d: [{a:0,b:2},{a:1,b:2},{a:2,b:3},{a:3,b:4},{a:3,b:5}]
+  },
+  'C3H8': {
+    atoms2d: [{sym:'C',x:-1.4,y:0},{sym:'C',x:0,y:0},{sym:'C',x:1.4,y:0},{sym:'H',x:-1.8,y:1.0},{sym:'H',x:-1.8,y:-1.0},{sym:'H',x:-2.1,y:0},{sym:'H',x:0,y:1.1},{sym:'H',x:0,y:-1.1},{sym:'H',x:1.8,y:1.0},{sym:'H',x:1.8,y:-1.0},{sym:'H',x:2.1,y:0}],
+    bonds2d: [{a:0,b:1,o:1},{a:1,b:2,o:1},{a:0,b:3,o:1},{a:0,b:4,o:1},{a:0,b:5,o:1},{a:1,b:6,o:1},{a:1,b:7,o:1},{a:2,b:8,o:1},{a:2,b:9,o:1},{a:2,b:10,o:1}],
+    atoms3d: [{sym:'C',x:-1.4,y:0,z:0},{sym:'C',x:0,y:0,z:0},{sym:'C',x:1.4,y:0,z:0},{sym:'H',x:-1.8,y:1.0,z:0.2},{sym:'H',x:-1.8,y:-0.7,z:-0.7},{sym:'H',x:-1.8,y:-0.3,z:0.9},{sym:'H',x:0,y:0.5,z:-1.0},{sym:'H',x:0,y:-1.1,z:0},{sym:'H',x:1.8,y:1.0,z:0.2},{sym:'H',x:1.8,y:-0.7,z:-0.7},{sym:'H',x:1.8,y:-0.3,z:0.9}],
+    bonds3d: [{a:0,b:1},{a:1,b:2},{a:0,b:3},{a:0,b:4},{a:0,b:5},{a:1,b:6},{a:1,b:7},{a:2,b:8},{a:2,b:9},{a:2,b:10}]
+  },
+  'C6H6': {
+    atoms2d: [{sym:'C',x:0,y:1.4},{sym:'C',x:1.21,y:0.7},{sym:'C',x:1.21,y:-0.7},{sym:'C',x:0,y:-1.4},{sym:'C',x:-1.21,y:-0.7},{sym:'C',x:-1.21,y:0.7},{sym:'H',x:0,y:2.4},{sym:'H',x:2.08,y:1.2},{sym:'H',x:2.08,y:-1.2},{sym:'H',x:0,y:-2.4},{sym:'H',x:-2.08,y:-1.2},{sym:'H',x:-2.08,y:1.2}],
+    bonds2d: [{a:0,b:1,o:2},{a:1,b:2,o:1},{a:2,b:3,o:2},{a:3,b:4,o:1},{a:4,b:5,o:2},{a:5,b:0,o:1},{a:0,b:6,o:1},{a:1,b:7,o:1},{a:2,b:8,o:1},{a:3,b:9,o:1},{a:4,b:10,o:1},{a:5,b:11,o:1}],
+    atoms3d: [{sym:'C',x:0,y:1.4,z:0},{sym:'C',x:1.21,y:0.7,z:0},{sym:'C',x:1.21,y:-0.7,z:0},{sym:'C',x:0,y:-1.4,z:0},{sym:'C',x:-1.21,y:-0.7,z:0},{sym:'C',x:-1.21,y:0.7,z:0},{sym:'H',x:0,y:2.4,z:0},{sym:'H',x:2.08,y:1.2,z:0},{sym:'H',x:2.08,y:-1.2,z:0},{sym:'H',x:0,y:-2.4,z:0},{sym:'H',x:-2.08,y:-1.2,z:0},{sym:'H',x:-2.08,y:1.2,z:0}],
+    bonds3d: [{a:0,b:1},{a:1,b:2},{a:2,b:3},{a:3,b:4},{a:4,b:5},{a:5,b:0},{a:0,b:6},{a:1,b:7},{a:2,b:8},{a:3,b:9},{a:4,b:10},{a:5,b:11}]
+  },
+  'CH2O': {
+    atoms2d: [{sym:'C',x:0,y:0},{sym:'O',x:0,y:-1.2},{sym:'H',x:1.0,y:0.6},{sym:'H',x:-1.0,y:0.6}],
+    bonds2d: [{a:0,b:1,o:2},{a:0,b:2,o:1},{a:0,b:3,o:1}],
+    atoms3d: [{sym:'C',x:0,y:0,z:0},{sym:'O',x:0,y:-1.2,z:0},{sym:'H',x:1.0,y:0.6,z:0},{sym:'H',x:-1.0,y:0.6,z:0}],
+    bonds3d: [{a:0,b:1},{a:0,b:2},{a:0,b:3}]
+  },
+  'CH3COOH': {
+    atoms2d: [{sym:'C',x:-1.2,y:0},{sym:'C',x:0.2,y:0},{sym:'O',x:0.9,y:-1.1},{sym:'O',x:1.0,y:1.0},{sym:'H',x:1.9,y:1.0},{sym:'H',x:-1.6,y:1.0},{sym:'H',x:-1.6,y:-1.0},{sym:'H',x:-1.9,y:0}],
+    bonds2d: [{a:0,b:1,o:1},{a:1,b:2,o:2},{a:1,b:3,o:1},{a:3,b:4,o:1},{a:0,b:5,o:1},{a:0,b:6,o:1},{a:0,b:7,o:1}],
+    atoms3d: [{sym:'C',x:-1.2,y:0,z:0},{sym:'C',x:0.2,y:0,z:0},{sym:'O',x:0.9,y:-1.1,z:0},{sym:'O',x:0.9,y:1.0,z:0},{sym:'H',x:1.8,y:1.0,z:0},{sym:'H',x:-1.6,y:0.5,z:0.9},{sym:'H',x:-1.6,y:0.5,z:-0.9},{sym:'H',x:-1.6,y:-1.0,z:0}],
+    bonds3d: [{a:0,b:1},{a:1,b:2},{a:1,b:3},{a:3,b:4},{a:0,b:5},{a:0,b:6},{a:0,b:7}]
+  },
+  'C3H6O': {
+    atoms2d: [{sym:'C',x:-1.4,y:0},{sym:'C',x:0,y:0},{sym:'O',x:0,y:-1.2},{sym:'C',x:1.4,y:0},{sym:'H',x:-1.8,y:1.0},{sym:'H',x:-1.8,y:-1.0},{sym:'H',x:-2.1,y:0},{sym:'H',x:1.8,y:1.0},{sym:'H',x:1.8,y:-1.0},{sym:'H',x:2.1,y:0}],
+    bonds2d: [{a:0,b:1,o:1},{a:1,b:2,o:2},{a:1,b:3,o:1},{a:0,b:4,o:1},{a:0,b:5,o:1},{a:0,b:6,o:1},{a:3,b:7,o:1},{a:3,b:8,o:1},{a:3,b:9,o:1}],
+    atoms3d: [{sym:'C',x:-1.4,y:0,z:0},{sym:'C',x:0,y:0,z:0},{sym:'O',x:0,y:-1.2,z:0},{sym:'C',x:1.4,y:0,z:0},{sym:'H',x:-1.8,y:0.5,z:0.9},{sym:'H',x:-1.8,y:0.5,z:-0.9},{sym:'H',x:-1.8,y:-1.0,z:0},{sym:'H',x:1.8,y:0.5,z:0.9},{sym:'H',x:1.8,y:0.5,z:-0.9},{sym:'H',x:1.8,y:-1.0,z:0}],
+    bonds3d: [{a:0,b:1},{a:1,b:2},{a:1,b:3},{a:0,b:4},{a:0,b:5},{a:0,b:6},{a:3,b:7},{a:3,b:8},{a:3,b:9}]
+  },
+  'SF6': {
+    atoms2d: [{sym:'S',x:0,y:0},{sym:'F',x:0,y:1.6},{sym:'F',x:0,y:-1.6},{sym:'F',x:1.6,y:0},{sym:'F',x:-1.6,y:0},{sym:'F',x:1.1,y:1.1},{sym:'F',x:-1.1,y:-1.1}],
+    bonds2d: [{a:0,b:1,o:1},{a:0,b:2,o:1},{a:0,b:3,o:1},{a:0,b:4,o:1},{a:0,b:5,o:1},{a:0,b:6,o:1}],
+    atoms3d: [{sym:'S',x:0,y:0,z:0},{sym:'F',x:0,y:1.6,z:0},{sym:'F',x:0,y:-1.6,z:0},{sym:'F',x:1.6,y:0,z:0},{sym:'F',x:-1.6,y:0,z:0},{sym:'F',x:0,y:0,z:1.6},{sym:'F',x:0,y:0,z:-1.6}],
+    bonds3d: [{a:0,b:1},{a:0,b:2},{a:0,b:3},{a:0,b:4},{a:0,b:5},{a:0,b:6}]
+  },
+  'PH3': {
+    atoms2d: [{sym:'P',x:0,y:0},{sym:'H',x:-1.0,y:-0.7},{sym:'H',x:1.0,y:-0.7},{sym:'H',x:0,y:1.1}],
+    bonds2d: [{a:0,b:1,o:1},{a:0,b:2,o:1},{a:0,b:3,o:1}],
+    atoms3d: [{sym:'P',x:0,y:0,z:0},{sym:'H',x:-1.0,y:-0.5,z:-0.4},{sym:'H',x:1.0,y:-0.5,z:-0.4},{sym:'H',x:0,y:-0.5,z:1.0}],
+    bonds3d: [{a:0,b:1},{a:0,b:2},{a:0,b:3}]
+  },
+  'BF3': {
+    atoms2d: [{sym:'B',x:0,y:0},{sym:'F',x:0,y:-1.3},{sym:'F',x:1.13,y:0.65},{sym:'F',x:-1.13,y:0.65}],
+    bonds2d: [{a:0,b:1,o:1},{a:0,b:2,o:1},{a:0,b:3,o:1}],
+    atoms3d: [{sym:'B',x:0,y:0,z:0},{sym:'F',x:0,y:-1.3,z:0},{sym:'F',x:1.13,y:0.65,z:0},{sym:'F',x:-1.13,y:0.65,z:0}],
+    bonds3d: [{a:0,b:1},{a:0,b:2},{a:0,b:3}]
+  },
+  'BCl3': {
+    atoms2d: [{sym:'B',x:0,y:0},{sym:'Cl',x:0,y:-1.7},{sym:'Cl',x:1.47,y:0.85},{sym:'Cl',x:-1.47,y:0.85}],
+    bonds2d: [{a:0,b:1,o:1},{a:0,b:2,o:1},{a:0,b:3,o:1}],
+    atoms3d: [{sym:'B',x:0,y:0,z:0},{sym:'Cl',x:0,y:-1.7,z:0},{sym:'Cl',x:1.47,y:0.85,z:0},{sym:'Cl',x:-1.47,y:0.85,z:0}],
+    bonds3d: [{a:0,b:1},{a:0,b:2},{a:0,b:3}]
+  },
+  'LiOH': {
+    atoms2d: [{sym:'Li',x:-1.2,y:0},{sym:'O',x:0,y:0},{sym:'H',x:1.0,y:0}],
+    bonds2d: [{a:0,b:1,o:1},{a:1,b:2,o:1}],
+    atoms3d: [{sym:'Li',x:-1.2,y:0,z:0},{sym:'O',x:0,y:0,z:0},{sym:'H',x:1.0,y:0,z:0}],
+    bonds3d: [{a:0,b:1},{a:1,b:2}]
+  },
+  'Li2CO3': {
+    atoms2d: [{sym:'Li',x:-2.4,y:0.6},{sym:'Li',x:-2.4,y:-0.6},{sym:'C',x:0,y:0},{sym:'O',x:0,y:-1.2},{sym:'O',x:1.1,y:0.6},{sym:'O',x:-1.1,y:0.6}],
+    bonds2d: [{a:2,b:3,o:2},{a:2,b:4,o:1},{a:2,b:5,o:1},{a:0,b:5,o:1},{a:1,b:5,o:1}],
+    atoms3d: [{sym:'Li',x:-2.4,y:0.6,z:0},{sym:'Li',x:-2.4,y:-0.6,z:0},{sym:'C',x:0,y:0,z:0},{sym:'O',x:0,y:-1.2,z:0},{sym:'O',x:1.1,y:0.6,z:0},{sym:'O',x:-1.1,y:0.6,z:0}],
+    bonds3d: [{a:2,b:3},{a:2,b:4},{a:2,b:5},{a:0,b:5},{a:1,b:5}]
+  },
+  'CaF2': {
+    atoms2d: [{sym:'F',x:-1.2,y:0},{sym:'Ca',x:0,y:0},{sym:'F',x:1.2,y:0}],
+    bonds2d: [{a:0,b:1,o:1},{a:1,b:2,o:1}],
+    atoms3d: [{sym:'F',x:-1.2,y:0,z:0},{sym:'Ca',x:0,y:0,z:0},{sym:'F',x:1.2,y:0,z:0}],
+    bonds3d: [{a:0,b:1},{a:1,b:2}]
+  },
+  'ZnS': {
+    atoms2d: [{sym:'Zn',x:-0.8,y:0},{sym:'S',x:0.8,y:0}],
+    bonds2d: [{a:0,b:1,o:1}],
+    atoms3d: [{sym:'Zn',x:-0.8,y:0,z:0},{sym:'S',x:0.8,y:0,z:0}],
+    bonds3d: [{a:0,b:1}]
+  },
+  'PbS': {
+    atoms2d: [{sym:'Pb',x:-0.8,y:0},{sym:'S',x:0.8,y:0}],
+    bonds2d: [{a:0,b:1,o:1}],
+    atoms3d: [{sym:'Pb',x:-0.8,y:0,z:0},{sym:'S',x:0.8,y:0,z:0}],
+    bonds3d: [{a:0,b:1}]
+  },
+  'FeS2': {
+    atoms2d: [{sym:'Fe',x:0,y:0},{sym:'S',x:1.0,y:0.5},{sym:'S',x:1.0,y:-0.5}],
+    bonds2d: [{a:0,b:1,o:1},{a:0,b:2,o:1},{a:1,b:2,o:1}],
+    atoms3d: [{sym:'Fe',x:0,y:0,z:0},{sym:'S',x:1.0,y:0.5,z:0.3},{sym:'S',x:1.0,y:-0.5,z:-0.3}],
+    bonds3d: [{a:0,b:1},{a:0,b:2},{a:1,b:2}]
+  },
+  'MoS2': {
+    atoms2d: [{sym:'Mo',x:0,y:0},{sym:'S',x:0,y:-1.4},{sym:'S',x:0,y:1.4}],
+    bonds2d: [{a:0,b:1,o:1},{a:0,b:2,o:1}],
+    atoms3d: [{sym:'Mo',x:0,y:0,z:0},{sym:'S',x:-0.9,y:-0.6,z:-0.9},{sym:'S',x:0.9,y:0.6,z:0.9}],
+    bonds3d: [{a:0,b:1},{a:0,b:2}]
+  },
+  'Na3PO4': {
+    atoms2d: [{sym:'P',x:0,y:0},{sym:'O',x:0,y:-1.2},{sym:'O',x:1.1,y:0.6},{sym:'O',x:-1.1,y:0.6},{sym:'O',x:0,y:1.4},{sym:'Na',x:2.2,y:0.6},{sym:'Na',x:-2.2,y:0.6},{sym:'Na',x:0,y:2.6}],
+    bonds2d: [{a:0,b:1,o:2},{a:0,b:2,o:1},{a:0,b:3,o:1},{a:0,b:4,o:1},{a:2,b:5,o:1},{a:3,b:6,o:1},{a:4,b:7,o:1}],
+    atoms3d: [{sym:'P',x:0,y:0,z:0},{sym:'O',x:0,y:-1.2,z:0.4},{sym:'O',x:1.1,y:0.6,z:-0.4},{sym:'O',x:-1.1,y:0.6,z:-0.4},{sym:'O',x:0,y:0.4,z:1.2},{sym:'Na',x:2.2,y:0.6,z:0},{sym:'Na',x:-2.2,y:0.6,z:0},{sym:'Na',x:0,y:0.8,z:2.4}],
+    bonds3d: [{a:0,b:1},{a:0,b:2},{a:0,b:3},{a:0,b:4},{a:2,b:5},{a:3,b:6},{a:4,b:7}]
+  },
+  'V2O5': {
+    atoms2d: [{sym:'V',x:-1.2,y:0},{sym:'V',x:1.2,y:0},{sym:'O',x:0,y:1.2},{sym:'O',x:-2.2,y:0.8},{sym:'O',x:2.2,y:0.8},{sym:'O',x:-1.2,y:-1.1},{sym:'O',x:1.2,y:-1.1}],
+    bonds2d: [{a:0,b:2,o:1},{a:1,b:2,o:1},{a:0,b:3,o:2},{a:1,b:4,o:2},{a:0,b:5,o:1},{a:1,b:6,o:1}],
+    atoms3d: [{sym:'V',x:-1.2,y:0,z:0},{sym:'V',x:1.2,y:0,z:0},{sym:'O',x:0,y:1.2,z:0},{sym:'O',x:-2.2,y:0.8,z:0},{sym:'O',x:2.2,y:0.8,z:0},{sym:'O',x:-1.2,y:-1.1,z:0.4},{sym:'O',x:1.2,y:-1.1,z:0.4}],
+    bonds3d: [{a:0,b:2},{a:1,b:2},{a:0,b:3},{a:1,b:4},{a:0,b:5},{a:1,b:6}]
+  },
+  'Cr2O3': {
+    atoms2d: [{sym:'Cr',x:-1.3,y:0},{sym:'Cr',x:1.3,y:0},{sym:'O',x:0,y:1.2},{sym:'O',x:-2.0,y:-0.8},{sym:'O',x:2.0,y:-0.8}],
+    bonds2d: [{a:0,b:2,o:1},{a:1,b:2,o:1},{a:0,b:3,o:1},{a:1,b:4,o:1}],
+    atoms3d: [{sym:'Cr',x:-1.3,y:0,z:0},{sym:'Cr',x:1.3,y:0,z:0},{sym:'O',x:0,y:1.2,z:0.4},{sym:'O',x:-2.0,y:-0.8,z:0},{sym:'O',x:2.0,y:-0.8,z:0}],
+    bonds3d: [{a:0,b:2},{a:1,b:2},{a:0,b:3},{a:1,b:4}]
+  },
+  'WO3': {
+    atoms2d: [{sym:'W',x:0,y:0},{sym:'O',x:0,y:-1.3},{sym:'O',x:1.3,y:0},{sym:'O',x:-1.3,y:0}],
+    bonds2d: [{a:0,b:1,o:2},{a:0,b:2,o:1},{a:0,b:3,o:1}],
+    atoms3d: [{sym:'W',x:0,y:0,z:0},{sym:'O',x:0,y:-1.3,z:0},{sym:'O',x:1.3,y:0,z:0},{sym:'O',x:-1.3,y:0,z:0}],
+    bonds3d: [{a:0,b:1},{a:0,b:2},{a:0,b:3}]
+  },
+  'TiN': {
+    atoms2d: [{sym:'Ti',x:-0.9,y:0},{sym:'N',x:0.9,y:0}],
+    bonds2d: [{a:0,b:1,o:1}],
+    atoms3d: [{sym:'Ti',x:-0.9,y:0,z:0},{sym:'N',x:0.9,y:0,z:0}],
+    bonds3d: [{a:0,b:1}]
+  },
+  'BN': {
+    atoms2d: [{sym:'B',x:-0.8,y:0},{sym:'N',x:0.8,y:0}],
+    bonds2d: [{a:0,b:1,o:2}],
+    atoms3d: [{sym:'B',x:-0.8,y:0,z:0},{sym:'N',x:0.8,y:0,z:0}],
+    bonds3d: [{a:0,b:1}]
+  },
+  'WC': {
+    atoms2d: [{sym:'W',x:-0.9,y:0},{sym:'C',x:0.9,y:0}],
+    bonds2d: [{a:0,b:1,o:3}],
+    atoms3d: [{sym:'W',x:-0.9,y:0,z:0},{sym:'C',x:0.9,y:0,z:0}],
+    bonds3d: [{a:0,b:1}]
+  },
+  'Si3N4': {
+    atoms2d: [{sym:'Si',x:-1.4,y:0.8},{sym:'Si',x:1.4,y:0.8},{sym:'Si',x:0,y:-1.0},{sym:'N',x:0,y:1.6},{sym:'N',x:-1.8,y:-0.5},{sym:'N',x:1.8,y:-0.5},{sym:'N',x:0,y:0}],
+    bonds2d: [{a:0,b:3,o:1},{a:1,b:3,o:1},{a:0,b:4,o:1},{a:2,b:4,o:1},{a:1,b:5,o:1},{a:2,b:5,o:1},{a:0,b:6,o:1},{a:1,b:6,o:1},{a:2,b:6,o:1}],
+    atoms3d: [{sym:'Si',x:-1.4,y:0.8,z:0},{sym:'Si',x:1.4,y:0.8,z:0},{sym:'Si',x:0,y:-1.0,z:0},{sym:'N',x:0,y:1.8,z:0},{sym:'N',x:-1.8,y:-0.5,z:0},{sym:'N',x:1.8,y:-0.5,z:0},{sym:'N',x:0,y:0,z:1.2}],
+    bonds3d: [{a:0,b:3},{a:1,b:3},{a:0,b:4},{a:2,b:4},{a:1,b:5},{a:2,b:5},{a:0,b:6},{a:1,b:6},{a:2,b:6}]
+  },
+  'Na2O': {
+    atoms2d: [{sym:'Na',x:-1.4,y:0},{sym:'O',x:0,y:0},{sym:'Na',x:1.4,y:0}],
+    bonds2d: [{a:0,b:1,o:1},{a:1,b:2,o:1}],
+    atoms3d: [{sym:'Na',x:-1.4,y:0,z:0},{sym:'O',x:0,y:0,z:0},{sym:'Na',x:1.4,y:0,z:0}],
+    bonds3d: [{a:0,b:1},{a:1,b:2}]
+  },
+  'K2O': {
+    atoms2d: [{sym:'K',x:-1.6,y:0},{sym:'O',x:0,y:0},{sym:'K',x:1.6,y:0}],
+    bonds2d: [{a:0,b:1,o:1},{a:1,b:2,o:1}],
+    atoms3d: [{sym:'K',x:-1.6,y:0,z:0},{sym:'O',x:0,y:0,z:0},{sym:'K',x:1.6,y:0,z:0}],
+    bonds3d: [{a:0,b:1},{a:1,b:2}]
+  },
 };
 
 // CPK-ish atom colors
@@ -2038,12 +2416,243 @@ function switchTab(t) {
   if (t === 'pt' && molAnim3d) { cancelAnimationFrame(molAnim3d); molAnim3d = null; }
   if (t === 'comb') closeElDetail();
   document.querySelectorAll('.tab').forEach((tab,i) => {
-    tab.classList.toggle('active', (i === 0 && t === 'pt') || (i === 1 && t === 'comb'));
+    tab.classList.toggle('active', ['pt','comb','econfig','library'][i] === t);
   });
-  document.getElementById('pt-panel').classList.toggle('active', t === 'pt');
-  document.getElementById('comb-panel').classList.toggle('active', t === 'comb');
+  ['pt-panel','comb-panel','econfig-panel','library-panel'].forEach(id => {
+    document.getElementById(id).classList.toggle('active', id === t+'-panel');
+  });
   if (t === 'pt') requestAnimationFrame(setCellSize);
+  if (t === 'library') renderLibrary();
+  if (t === 'econfig') renderEconfigList('');
+
+  // Set scrollable panel heights
+  ['comb-panel','econfig-panel','library-panel'].forEach(id => {
+    const p = document.getElementById(id);
+    if (p) {
+      const CHROME_H = 88;
+      p.style.height = (window.innerHeight - CHROME_H) + 'px';
+    }
+  });
 }
+
+// ── ELECTRON CONFIG EXPLORER ──
+const ORBITAL_ORDER = [
+  {n:1,l:0,name:'1s',cap:2},{n:2,l:0,name:'2s',cap:2},{n:2,l:1,name:'2p',cap:6},
+  {n:3,l:0,name:'3s',cap:2},{n:3,l:1,name:'3p',cap:6},{n:4,l:0,name:'4s',cap:2},
+  {n:3,l:2,name:'3d',cap:10},{n:4,l:1,name:'4p',cap:6},{n:5,l:0,name:'5s',cap:2},
+  {n:4,l:2,name:'4d',cap:10},{n:5,l:1,name:'5p',cap:6},{n:6,l:0,name:'6s',cap:2},
+  {n:4,l:3,name:'4f',cap:14},{n:5,l:2,name:'5d',cap:10},{n:6,l:1,name:'6p',cap:6},
+  {n:7,l:0,name:'7s',cap:2},{n:5,l:3,name:'5f',cap:14},{n:6,l:2,name:'6d',cap:10},
+  {n:7,l:1,name:'7p',cap:6},
+];
+const L_NAMES = ['s','p','d','f'];
+const L_LETTERS = {0:'s',1:'p',2:'d',3:'f'};
+
+function getOrbitalFilling(Z) {
+  let remaining = Z;
+  const filled = [];
+  for (const orb of ORBITAL_ORDER) {
+    if (remaining <= 0) break;
+    const e = Math.min(remaining, orb.cap);
+    filled.push({...orb, e});
+    remaining -= e;
+  }
+  return filled;
+}
+
+function getLastElectron(filling) {
+  if (!filling.length) return null;
+  const last = filling[filling.length - 1];
+  const n = last.n, l = last.l, e = last.e;
+  // ml: fill boxes with +l..0..-l, spin up first then down
+  const numBoxes = 2*l+1;
+  // e electrons: first ceil(e/numBoxes)... actually just find which box and spin
+  let box = 0, spin = 1; // spin: 1=up, -1=down
+  if (e <= numBoxes) { box = e - 1; spin = 1; }
+  else { box = (e - numBoxes) - 1; spin = -1; }
+  const ml = l - box;  // fill from +l downward
+  const ms = spin === 1 ? '+½' : '−½';
+  return { n, l, ml, ms, lname: L_LETTERS[l] };
+}
+
+function buildAufbauHTML(filling) {
+  // Group by principal quantum number for display
+  const byN = {};
+  filling.forEach(orb => {
+    if (!byN[orb.n]) byN[orb.n] = [];
+    byN[orb.n].push(orb);
+  });
+  let html = '';
+  Object.keys(byN).sort((a,b)=>+a-+b).forEach(n => {
+    html += `<div class="aufbau-row"><span class="aufbau-label">n=${n}</span>`;
+    byN[n].forEach(orb => {
+      html += `<div class="aufbau-subshell"><span class="aufbau-subshell-name">${orb.name}</span>`;
+      const numBoxes = 2*orb.l+1;
+      // Fill boxes: spin-up first, then spin-down
+      for (let box = 0; box < numBoxes; box++) {
+        const upIdx = box;        // up electron index
+        const downIdx = box + numBoxes; // down electron index
+        const hasUp   = orb.e > upIdx;
+        const hasDown = orb.e > downIdx;
+        const cls = (hasUp && hasDown) ? 'full' : (hasUp ? 'half' : '');
+        html += `<div class="orbital-box ${cls}">
+          <div class="electron-arrow ${hasUp ? 'up' : 'empty'}"></div>
+          <div class="electron-arrow ${hasDown ? 'down' : 'empty'}"></div>
+        </div>`;
+      }
+      html += `</div>`;
+    });
+    html += `</div>`;
+  });
+  return html;
+}
+
+let econfigFilter = '';
+function econfigSearch() {
+  econfigFilter = document.getElementById('econfig-search').value;
+  renderEconfigList(econfigFilter);
+}
+
+function renderEconfigList(q) {
+  const list = document.getElementById('econfig-list');
+  const filtered = ELEMENTS.filter(e => !e.isLabel && (
+    !q || e.name.toLowerCase().includes(q.toLowerCase()) ||
+    e.sym.toLowerCase().startsWith(q.toLowerCase()) ||
+    String(e.n) === q
+  ));
+  list.innerHTML = filtered.map(e => {
+    const bg = CAT_BG[e.cat] || '#666';
+    const tc = CAT_TEXT_COLOR[e.cat] || '#fff';
+    return `<div class="econfig-list-item" data-n="${e.n}" onclick="showEconfig(${e.n})">
+      <span class="econfig-list-sym" style="background:${bg};color:${tc}">${e.sym}</span>
+      <span class="econfig-list-name">${e.name}</span>
+      <span class="econfig-list-n">${e.n}</span>
+    </div>`;
+  }).join('');
+}
+
+function showEconfig(Z) {
+  const el = ELEMENTS.find(e => e.n === Z && !e.isLabel);
+  if (!el) return;
+
+  document.querySelectorAll('.econfig-list-item').forEach(i => i.classList.toggle('active', +i.dataset.n === Z));
+
+  const bg = CAT_BG[el.cat] || '#666';
+  const tc = CAT_TEXT_COLOR[el.cat] || '#fff';
+
+  document.getElementById('econfig-content').style.display = 'block';
+  document.getElementById('econfig-empty-state').style.display = 'none';
+
+  const symBox = document.getElementById('econfig-sym-box');
+  symBox.textContent = el.sym;
+  symBox.style.background = bg;
+  symBox.style.color = tc;
+
+  document.getElementById('econfig-name').textContent = `${el.n}. ${el.name}`;
+  document.getElementById('econfig-full-config').textContent = ECONFIGS[el.n] || '—';
+  document.getElementById('econfig-shorthand').textContent = CAT_LABELS[el.cat] || '';
+
+  const filling = getOrbitalFilling(el.n);
+  document.getElementById('econfig-aufbau').innerHTML = buildAufbauHTML(filling);
+
+  const last = getLastElectron(filling);
+  if (last) {
+    document.getElementById('econfig-quantum').innerHTML = `
+      <div class="qn-card">
+        <div class="qn-label">Principal</div>
+        <div class="qn-symbol">n</div>
+        <div class="qn-value">${last.n}</div>
+        <div class="qn-meaning">Energy level / shell</div>
+      </div>
+      <div class="qn-card">
+        <div class="qn-label">Angular momentum</div>
+        <div class="qn-symbol">ℓ</div>
+        <div class="qn-value">${last.l} (${last.lname})</div>
+        <div class="qn-meaning">Orbital shape: s/p/d/f</div>
+      </div>
+      <div class="qn-card">
+        <div class="qn-label">Magnetic</div>
+        <div class="qn-symbol">m<sub style="font-size:10px">ℓ</sub></div>
+        <div class="qn-value">${last.ml}</div>
+        <div class="qn-meaning">Orbital orientation</div>
+      </div>
+      <div class="qn-card">
+        <div class="qn-label">Spin</div>
+        <div class="qn-symbol">m<sub style="font-size:10px">s</sub></div>
+        <div class="qn-value">${last.ms}</div>
+        <div class="qn-meaning">Electron spin direction</div>
+      </div>`;
+  }
+
+  const propData = [
+    ['Atomic mass', el.mass ? `${el.mass} u` : '—'],
+    ['Phase', el.phase || '—'],
+    ['Melting pt', el.melt !== null && el.melt !== undefined ? `${el.melt} °C` : '—'],
+    ['Boiling pt', el.boil !== null && el.boil !== undefined ? `${el.boil} °C` : '—'],
+    ['Density', el.density ? (el.density < 0.01 ? `${(el.density*1000).toFixed(3)} g/L` : `${el.density} g/cm³`) : '—'],
+    ['Discovered', el.discovered || '—'],
+  ];
+  document.getElementById('econfig-props-row').innerHTML = propData.map(([k,v]) =>
+    `<div class="prop-card"><div class="pk">${k}</div><div class="pv">${v}</div></div>`
+  ).join('');
+}
+
+// ── COMPOUND LIBRARY ──
+let libFilter = 'all';
+function setLibFilter(btn, f) {
+  document.querySelectorAll('#library-filter-row .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  libFilter = f;
+  renderLibrary();
+}
+
+function renderLibrary() {
+  const q = (document.getElementById('library-search')?.value || '').toLowerCase().trim();
+  const grid = document.getElementById('library-grid');
+  if (!grid) return;
+
+  const entries = Object.entries(COMPOUNDS).filter(([formula, c]) => {
+    const matchFilter = libFilter === 'all' || c.exists === libFilter;
+    const matchQ = !q || formula.toLowerCase().includes(q) ||
+      c.name.toLowerCase().includes(q) ||
+      (c.uses || []).some(u => u.toLowerCase().includes(q));
+    return matchFilter && matchQ;
+  });
+
+  if (!entries.length) {
+    grid.innerHTML = `<div style="color:var(--muted);font-size:13px;grid-column:1/-1;padding:40px 0;text-align:center;">No compounds match your search.</div>`;
+    return;
+  }
+
+  grid.innerHTML = entries.map(([formula, c]) => {
+    const badgeLabel = c.exists === 'yes' ? 'Exists' : c.exists === 'no' ? 'Non-existent' : 'Unstable';
+    const usesHtml = (c.uses || []).slice(0, 4).map(u => `<span class="lib-card-use">${u}</span>`).join('');
+    return `<div class="lib-card" onclick="jumpToCompound('${formula}')">
+      <div class="lib-card-header">
+        <span class="lib-card-formula">${formula}</span>
+        <span class="lib-card-name">${c.name}</span>
+        <span class="lib-card-badge ${c.exists}">${badgeLabel}</span>
+      </div>
+      <div class="lib-card-desc">${c.desc}</div>
+      <div class="lib-card-uses">${usesHtml}</div>
+    </div>`;
+  }).join('');
+}
+
+function jumpToCompound(formula) {
+  // Switch to compound lab and pre-fill the formula
+  switchTab('comb');
+  // Parse formula into elements — best-effort for simple formulas
+  const matches = [...formula.matchAll(/([A-Z][a-z]?)(\d*)/g)];
+  combo = [];
+  matches.forEach(([, sym, count]) => {
+    const el = ELEMENTS.find(e => e.sym === sym && !e.isLabel);
+    if (el) combo.push({...el, count: count ? +count : 1});
+  });
+  renderCombo();
+  if (combo.length) doLookup();
+}
+
 
 function setCellSize() {
   // All constants derived from CSS — no DOM measurement, works synchronously.
